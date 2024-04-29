@@ -1,0 +1,58 @@
+<div class="logo-container">
+  <img src="https://www.umi.ac.ma/wp-content/themes/umi/images/logo.png" alt="Logo" class="logo" style="max-width: 600px; max-height: 600px;">
+</div>
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">I' am a teacher</h2>
+        <p class="user_unregistered-text" style="text-align: center;"><img src="assets/Tablet login-amico.png" style="max-width: 230px; max-height: 230px;"></p>
+
+        <button class="user_unregistered-signup" id="signup-button">Login</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">I' am an admin </h2>
+        <p class="user_registered-text" style="text-align: center;"><img src="assets/Secure login-bro.png" style="max-width: 230px; max-height: 230px;"></p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Admin Login</h2>
+        <form class="forms_form" (ngSubmit)="onSubmitAdmin()">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="email" placeholder="username" class="forms_field-input" required autofocus [(ngModel)]="etab.adminUsername" name="adminUsername" />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required [(ngModel)]="etab.adminPassword" name="adminPassword" />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+
+
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Professor Login</h2>
+        <form class="forms_form" (ngSubmit)="onSubmitProf()">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required autofocus [(ngModel)]="prof.email" name="email" />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required [(ngModel)]="prof.password" name="password" />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

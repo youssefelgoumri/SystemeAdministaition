@@ -1,0 +1,59 @@
+<div mat-dialog-content class="mat">
+    Add Results with it's items
+  </div>
+  <div mat-dialog-actions class="mat-dialog-actions">
+    <mat-stepper linear #stepper>
+      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fill out Semestre Infos</ng-template>
+          <!-- <mat-form-field>
+            <mat-label>cne</mat-label>
+            <input matInput formControlName="cne" [(ngModel)]="rs.cne" placeholder="cne" required>
+          </mat-form-field> -->
+          <!-- <mat-form-field>
+            <mat-label>filiereID</mat-label>
+            <input matInput   formControlName="filiereID" [(ngModel)]="rs.filiereID" placeholder="filiereID" required>
+          </mat-form-field> -->
+          <mat-form-field>
+            <mat-label>filiereID</mat-label>
+            <mat-select formControlName="filiereID" [(ngModel)]="rs.filiereID">
+           
+              <mat-option *ngFor="let f of filieres" [value]="f.id">{{f.nom}}</mat-option>
+            
+            </mat-select>
+            <!-- <mat-label>filiereID</mat-label>
+            <input matInput   formControlName="filiereID" [(ngModel)]="rr.filiereID" placeholder="filiereID" required> -->
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>semestreID</mat-label>
+            <select matNativeControl formControlName="semestreID" [(ngModel)]="rs.semestreID"  required>
+              <option value="s1">Semestre 1</option>
+              <option value="s2">Semestre 2</option>
+              <option value="s3">Semestre 3</option>
+              <option value="s4">Semestre 4</option>
+              <option value="s5">Semestre 5</option>
+              <option value="s6">Semestre 6</option>
+            </select>
+            <!-- <input matInput formControlName="semestreID" [(ngModel)]="rr.semestreID" placeholder="semestreID" required > -->
+          </mat-form-field>
+          <div class="button-container">
+            <button class="custom-btn btn-7" (click)="onCancel()"><span>Cancel</span></button>
+            <button class="custom-btn btn-7" matStepperNext  [disabled]="!firstFormGroup.valid" ><span>Next</span></button>
+          </div>
+        </form>
+      </mat-step>
+  
+  
+      
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button class="custom-btn btn-7" (click)="addRS()">Add</button>
+          <button class="custom-btn btn-7" (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+  

@@ -1,0 +1,216 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+  border-radius: 40px;
+}
+.expandedclose {
+  margin-left: calc(70px); /* Adjust the width when sidebar is close */
+  border-radius: 40px;
+}
+
+.expanded {
+  margin-left: 280px; /* Adjust the width when sidebar is open */
+  border-radius: 40px;
+}
+
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+
+
+.h1{
+  text-align: center;
+  color: rgb(53, 146, 213);
+  margin-top: 12px;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+}
+
+.example-form-field {
+  flex-grow: 1; /* Allow the form field to grow to fill available space */
+}
+
+.mat-form-field-flex {
+  display: flex;
+  justify-content: space-between; /* Space between label and input */
+  align-items: center;
+}
+
+.mat-icon-button {
+  margin-left: -24px; /* Adjust the margin to position the clear button */
+}
+
+
+
+.form-group {
+  display: inline-block; /* Display the form-group as an inline-block element */
+}
+.mat-form-field {
+  height: 40px; /* Set the height of mat-form-field */
+}
+
+#profId {
+  height: 40px; /* Set the height to match the button */
+  margin-right: 10px; /* Add margin to the right */
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add this line to distribute space between items */
+
+}
+
+button {
+  margin-left: 10px;
+  margin-bottom: 22px;
+}
+
+.custom-btn {
+  width: 50px;
+  height: 55px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-7 {
+  background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+  line-height: 55px;
+  padding: 0;
+  border: none;
+  text-align: center;
+}
+.btn-7 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: rgba(2,126,251,1);
+  box-shadow:
+    -7px -7px 20px 0px rgba(255,255,255,.9),
+    -4px -4px 5px 0px rgba(255,255,255,.9),
+    7px 7px 20px 0px rgba(0,0,0,.2),
+    4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7:before{
+  height: 0%;
+  width: 2px;
+}
+.btn-7:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-7:hover{
+  color: rgba(251,75,2,1);
+  background: transparent;
+}
+.btn-7:hover:before {
+  height: 100%;
+}
+.btn-7:hover:after {
+  width: 100%;
+}
+.btn-7 span:before,
+.btn-7 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgba(2,126,251,1);
+  box-shadow:
+    -7px -7px 20px 0px rgba(255,255,255,.9),
+    -4px -4px 5px 0px rgba(255,255,255,.9),
+    7px 7px 20px 0px rgba(0,0,0,.2),
+    4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-7 span:after {
+  height: 2px;
+  width: 0%;
+}
+.btn-7 span:hover:before {
+  height: 100%;
+}
+.btn-7 span:hover:after {
+  width: 100%;
+}
+.h2{
+  text-align: center;
+  color: rgb(53, 146, 213);
+  margin-top: 12px;
+
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Ensure cards wrap to new lines if container width is exceeded */
+}
+
+.card {
+  background-color: #3592d5; /* Blue background */
+  color: #ffffff; /* Text color */
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  width: calc(33.33% - 20px); /* Adjust card width as needed */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+
+  /* Orange shadow */
+  box-shadow: 0 4px 6px rgb(251, 75, 2),
+  0 1px 3px rgba(251, 75, 2, 0.76);
+}
+
+.card-content {
+  /* Ensure content aligns properly */
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: calc(50% - 20px); /* Adjust card width for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 100%; /* Full width on even smaller screens */
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 100%; /* Full width on even smaller screens */
+  }
+}

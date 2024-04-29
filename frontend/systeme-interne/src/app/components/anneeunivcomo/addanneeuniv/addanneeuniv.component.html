@@ -1,0 +1,78 @@
+<!-- <div mat-dialog-content class="mat">
+  Add new Annee Universitaire Courante
+</div> -->
+<div mat-dialog-actions class="mat-dialog-actions">
+  <mat-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out Annee Universitaire Courante</ng-template>
+        <mat-form-field>
+          <mat-label>anneeUniversitaire</mat-label>
+          <input matInput [(ngModel)]="anneeUnivToAdd.anneeUniversitaire" formControlName="datadebu" placeholder="yyyy-yyyy" required>
+          
+        </mat-form-field>
+       
+        
+       
+        <div class="button-container">
+          <button class="custom-btn btn-7" (click)="onCancel()"><span>Cancel</span></button>
+          <button class="custom-btn btn-7" matStepperNext  [disabled]="!firstFormGroup.valid" ><span>Next</span></button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <form>
+      <div>
+        <button class="custom-btn btn-7" (click)="addnew()">Add</button>
+        <button class="custom-btn btn-7" (click)="stepper.reset()">Reset</button>
+      </div>
+    </form>
+    </mat-step>
+  </mat-stepper>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <mat-dialog-content class="content-dialog">
+  Add new reservation?
+</mat-dialog-content>
+  <div class="button-group">
+    <div class="form-container" >
+
+      
+
+      <div class="form-group" >
+        <label for="dateDebut">Date Début:</label>
+        <input  class ="input-field" type="datetime-local" id="dateDebut"  required>
+      </div>
+
+
+
+      <div class="form-group" >
+        <label for="dateFin">Date Fin:</label>
+        <input  class ="input-field" type="datetime-local" id="dateFin" required>
+    </div>
+    <div class="form-group">
+      <label >Choose a salle:</label>
+      <select [(ngModel)]="selectedSalleId" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let s of salles" [value]="s.idSalle">{{ s.idSalle }}</option>
+    </select>
+    
+    </div>
+    
+
+    <mat-dialog-actions class="button-container">
+      <button mat-button type="submit" class="custom-btn btn-7"  (click)="onAdd()"><span>Save</span></button>
+      <button mat-button class="custom-btn btn-7" (click)="onCancel()"><span>Cancel</span></button>
+    </mat-dialog-actions>
+  </div>
+  </div> -->

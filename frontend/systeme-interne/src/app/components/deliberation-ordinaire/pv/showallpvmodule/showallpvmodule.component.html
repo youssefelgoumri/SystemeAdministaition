@@ -1,0 +1,112 @@
+<app-sidenav (sidebarToggle)="onSidebarToggle($event)"></app-sidenav>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+</div>
+
+<h1 class="h1" [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }" >Les notes du modules</h1>
+
+<div style="margin-top: 80px;" class="head-title">
+  <div class="left">
+    <h1></h1>
+
+  </div>
+  <div class="button-container" >
+        <button   class="custom-btn btn-7" (click)="openAddPVDialog()"><span>
+            <i  class='bx bxs-cloud-download ' style="font-size: medium;">Add Notes</i></span>
+        </button>
+    </div>
+
+</div>
+
+
+
+<div class="mat-elevation-z8" [ngClass]="{ 'expanded': isSidebarOpen === 'open' ,'expandedclose': isSidebarOpen === 'close' }">
+    <table style="margin-top: 10px;"  mat-table [dataSource]="PlandevalidationmoduleSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="CNE">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CNE </th>
+        <td mat-cell *matCellDef="let row"> {{row.cne}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="moduleIntitule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Module </th>
+        <td mat-cell *matCellDef="let row"> {{row.moduleIntitule}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="elements">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Elements </th>
+        <td mat-cell *matCellDef="let row"> 
+          <ul>
+            <li *ngFor="let pvelement of row.planDeValidationsElements">
+              {{ pvelement.partieCours }}
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="noteselements">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Notes Elements </th>
+        <td mat-cell *matCellDef="let row"> 
+          <ul>
+            <li *ngFor="let pvelement of row.planDeValidationsElements">
+              {{ pvelement.noteFinale }} [ {{pvelement.resultat}} ]
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="semestre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Semestre </th>
+        <td mat-cell *matCellDef="let row"> {{row.semestreID}} </td>
+      </ng-container>
+  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="filiereNom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Filiere </th>
+        <td mat-cell *matCellDef="let row"> {{row.filiereNom}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="noteFinale">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> note </th>
+        <td mat-cell *matCellDef="let row"> {{row.noteFinale}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="resultat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> resultat </th>
+        <td mat-cell *matCellDef="let row"> {{row.resultat}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="exporter">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Exporter </th>
+        <td mat-cell *matCellDef="let row"> 
+            
+            <div class="button-container" >
+                <button   class="custom-btn btn-7" (click)="exporterPVtoexcel(row.moduleID)"><span>
+                <i  class='bx bxs-cloud-download ' style="font-size: medium;">Exporter {{row.moduleID}} </i></span>
+                </button>
+            </div>
+
+        </td>
+      </ng-container>
+
+  
+      
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter </td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+  
+  

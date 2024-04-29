@@ -1,0 +1,234 @@
+<app-sidenav-prof ></app-sidenav-prof>
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+</div>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen1 === 'open' , 'expandedclose': isSidebarOpen1 === 'close' }">
+<div  class="container1" >
+    <div class="header">
+        <h1> {{ professeur.nom}} {{professeur.prenom}}</h1>
+
+    </div>
+    <div class="container">
+
+        <div class="contentbox-container">
+            <div class="section basic-info">
+                <h2>Basic Info</h2>
+                <div class="profile">
+                    <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" alt="Profile Picture">
+                    <div class="info">
+                        <p><strong>Name:</strong>{{ nom}}  {{prenom}}</p>
+                        <p><strong>ID:</strong><span> {{professeur.id}} </span></p>
+                        <p><a class="change" (click)="openchangepassword()"> <i class="bi bi-lock"></i> CHANGE PASSWORD</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="section details">
+                <div class="row">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" (input)="checkInput()" [(ngModel)]="professeur.prenom" [ngModelOptions]="{standalone: true}"   class="form-control" id="nom" placeholder="Nom">
+
+                </div>
+                <div class="row">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" (input)="checkInput()" [(ngModel)]="professeur.nom" [ngModelOptions]="{standalone: true}"   class="form-control" id="nom" placeholder="Nom">
+
+                </div>
+                <div class="row">
+                    <label for="department">Department:</label>
+                    <select (input)="checkInput()" id="departement" [(ngModel)]="professeur.departement" [ngModelOptions]="{standalone: true}" >
+                        <option>Département_de_Biologie</option>
+                        <option>Département_de_Chimie</option>
+                        <option>Département_de_Géologie</option>
+                        <option>Département_d_Informatique</option>
+                        <option>Département_de_Mathématiques</option>
+                        <option>Département_de_Physique</option>
+                      </select>
+                </div>
+                <div class="row">
+                    <label for="etablissement">Etablissement:</label>
+                    <select id="etab" (input)="checkInput()"  [(ngModel)]="professeur.etablissement" [ngModelOptions]="{standalone: true}" >
+                        <option *ngFor="let dept of etablissements" [value]="dept.codeName">{{dept.codeName}}</option>
+                      </select>
+                </div>
+                <div class="row">
+                    <label for="email">Email:</label>
+                    <input (input)="checkInput()" type="email" id="email" [(ngModel)]="professeur.email">
+                </div>
+                <div class="row">
+
+                </div>
+                <div  class="row">
+                    <input  (input)="checkInput()"  type="checkbox" [checked]="db===true" (change)="db = !db"/>
+                    <label >Département_de_Biologie</label>
+                </div>
+                <div class="row">
+                    <input (input)="checkInput()"   type="checkbox" [checked]="dc===true" (change)="dc = !dc"/>
+                    <label >Département_de_Chimie</label>
+                </div>
+                <div class="row">
+                    <input (input)="checkInput()" type="checkbox"  [checked]="dg===true" (change)="dg = !dg"/>
+                    <label >Département_de_Géologie</label>
+                </div>
+                <div class="row">
+                    <input (input)="checkInput()" type="checkbox"  [checked]="di===true" (change)="di = !di"/>
+                    <label >Département_d_Informatique</label>
+                </div>
+                <div class="row">
+                    <input (input)="checkInput()" type="checkbox" [checked]="dm===true" (change)="dm = !dm" />
+                    <label >Département_de_Mathématiques</label>
+                </div>
+                <div class="row">
+                    <input (input)="checkInput()" type="checkbox" [checked]="dp===true" (change)="dp = !dp"/>
+                    <label >Département_de_Physique</label>
+                </div>
+
+
+            </div>
+
+        </div>
+</div>
+<div class="button-container buttons">
+    <button class="custom-btn btn-7" [class.enabled]="isInputValid" [disabled]="!isInputValid" (click)="cancel()"><span>CANCEL</span></button>
+    <button class="custom-btn btn-7" [class.enabled]="isInputValid" [disabled]="!isInputValid" (click)="save()"><span>SAVE</span></button>
+</div>
+
+
+<!-- <div class="container-wrapper">
+    <div class="container2">
+
+        <div class="contentbox">
+            <div class="section basic-info">
+                <h2>Contact</h2>
+
+            </div>
+            <div class="section details">
+                <div class="row">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" [(ngModel)]="professeur.email">
+                </div>
+                <div class="row">
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone"  [(ngModel)]="professeur.phone">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container3">
+        <div class="header">
+            <h1>User Profile</h1>
+            <div class="buttons">
+                <button>CANCEL</button>
+                <button>SAVE</button>
+            </div>
+        </div>
+        <div class="contentbox">
+            <div class="section basic-info">
+                <h2>Basic Info</h2>
+                <div class="info">
+                    <p><strong>Name:</strong> Amelia Harper</p>
+                    <p><strong>ID:</strong> 22</p>
+                    <p><a href="#">CHANGE PASSWORD</a></p>
+                </div>
+            </div>
+            <div class="section details">
+                <div class="row">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" value="Amelia" >
+                </div>
+                <div class="row">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" value="Harper" >
+                </div>
+                <div class="row">
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" value="UI/UX" >
+                </div>
+                <div class="row">
+                    <label for="position">Position:</label>
+                    <input type="text" id="position" value="Designer" >
+                </div>
+                <div class="row">
+                    <label for="hiredDate">Hired Date:</label>
+                    <input type="text" id="hiredDate" value="3/3/2023" >
+                </div>
+                <div class="row">
+                    <label for="birthDate">Birth Date:</label>
+                    <input type="text" id="birthDate" value="5/3/1980" >
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+</div>
+</div>
+<div class="popup card" *ngIf="ischangepassword">
+    <div class="card-body">
+      <h1 style="color: #3C91E6;">
+        Edit Password !
+      </h1>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            <form >
+
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <label for="currentpassword">Current Password</label>
+                  <input #passwordInputcurrentpassword type="{{ hidePassword ? 'password' : 'text' }}" [(ngModel)]="currentpassword" [ngModelOptions]="{standalone: true}"    class="form-control" id="currentpassword" placeholder="current password">
+                </div>
+
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <label for="password">New Password</label>
+                  <input #passwordInput type="{{ hidePassword ? 'password' : 'text' }}" [(ngModel)]="newpassword" [ngModelOptions]="{standalone: true}"    class="form-control" id="password" placeholder="new password">
+
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="confpassword">Confirm Password</label>
+                    <input #confirmPasswordInput type="{{ hidePassword ? 'password' : 'text' }}" [(ngModel)]="confpassword"  [ngModelOptions]="{standalone: true}"  class="form-control" id="confpassword" placeholder="Confirm password" (input)="checkPasswordsMatch()" [class.password-error]="passwordsMatch===false"/>
+
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <i style="color: red;" *ngIf="iserror===true">{{error}}</i>
+                </div>
+              </div>
+
+              <div class="form-group row" >
+                <div class="col-sm-12">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" (click)="togglePasswordVisibility()">Show Password
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <div class="form-group row">
+                <div class="col-sm-6 ">
+                  <br />
+
+                  <button (click)="changePassword()"  type="button" id="submitstyle" class=" btn btn-primary px-4 float-right ">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <a id="close-pop" (click)="closechangepassword()"
+         class="box-close">
+        ×
+      </a>
+    </div>
+  </div>

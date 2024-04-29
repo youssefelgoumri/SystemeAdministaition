@@ -1,0 +1,36 @@
+<app-sidenav (sidebarToggle)="onSidebarToggle($event)"></app-sidenav>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+</div>
+
+<h1 class="h1"  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">Consult Reserved Salles</h1>
+
+<div class="form-container"  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <div class="form-group">
+    <label for="dateDebut">Date Début:</label>
+    <input type="datetime-local" id="dateDebut" [(ngModel)]="consultData.dateDebut" required>
+  </div>
+
+  <div class="form-group">
+    <label for="dateFin">Date Fin:</label>
+    <input type="datetime-local" id="dateFin" [(ngModel)]="consultData.dateFin" required>
+  </div>
+  <div class="button-container">
+  <button  class="custom-btn btn-7" (click)="onConsult()"><span>Consult</span></button>
+  </div>
+</div>
+
+
+<!-- Display the list of salles -->
+<div *ngIf="salles.length > 0"  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <h2 class="h2">Reserved Salles:</h2>
+  <div class="card-container">
+    <div *ngFor="let salle of salles" class="card">
+      <p>Id Salle: {{ salle.idSalle }}</p>
+      <p>Nom: {{ salle.nom }}</p>
+      <p>Type: {{ salle.typeSalle }}</p>
+      <p>Description: {{ salle.description }}</p>
+    </div>
+  </div>
+</div>

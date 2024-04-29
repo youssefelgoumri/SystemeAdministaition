@@ -1,0 +1,105 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<section id="sidebar" *ngIf="!isSideBarOpen" >
+  <a id="close-pop" class="box-close" (click)="openPopup()">
+
+    <i class="fa fa-window-close" aria-hidden="true"></i>
+  </a>
+
+  <img alt="" src="assets/images/logo-UMI-Amazigh-removebg-preview.png">
+
+  <a class="brand">
+    <i class='bx bxs-smile'></i>
+    <span class="text">Admin Global</span>
+  </a>
+  <ul class="side-menu top">
+    <li [class.active]="isClickeddashboard">
+      <a (click)="dashboard()">
+        <fa-icon class='bx bxs-dashboard' [icon]="faDashboard" style="color:orange"></fa-icon>
+        <span class="text">Dashboard</span>
+      </a>
+    </li>
+    <li [class.active]="isClickedetablissement" >
+    <a (click)="etablissement()" >
+<!--        <i class='bx bxs-message-dots fa fa-university' ></i>-->
+        <fa-icon class='bx bxs-shopping-bag-alt fa fa-university' aria-hidden="true" style="color:orange"></fa-icon>
+        <span class="text">Etablissement</span>
+
+      </a>
+
+    </li>
+    <li  [class.active]="isFileireClicked">
+      <a (click)="Filiere()">
+        <fa-icon class='bx bxs-dashboard fa fa-file' aria-hidden="true" style="color:orange"></fa-icon>
+        <span class="text">Filiers</span>
+      </a>
+    </li>
+
+
+    <li  [class.active]="isModuleClicked">
+      <a (click)="Module()">
+
+        <i class='bx bxs-dashboard fa fa-book' aria-hidden="true" style="color:orange;font-size: 1.25rem;"></i>
+          <span class="text">Modules</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="side-menu">
+    <li>
+      <a   class="logout" (click)="logout()">
+        <fa-icon class='bx bxs-dashboard fa fa-sign-out' aria-hidden="true" style="color:orange"></fa-icon>
+        <span class="text">Logout</span>
+      </a>
+    </li>
+  </ul>
+</section>
+<section id="close" *ngIf="isSideBarOpen">
+  <a id="open-pop" class="box-close" (click)="closePopup()">
+
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </a>
+  <a class="brand">
+    <i class='bx bxs-smile'></i>
+    <span class="text"></span>
+  </a>
+  <ul class="side-menu top">
+    <li [class.active]="isClickeddashboard">
+      <a (click)="dashboard()">
+        <fa-icon class='bx bxs-dashboard' [icon]="faDashboard" style="color:orange"></fa-icon>
+        <span class="text"></span>
+      </a>
+    </li>
+    <li [ngClass]="{ 'active': isClickedetablissement}" >
+      <a (click)="etablissement()">
+          <fa-icon class='bx bxs-dashboard fa fa-university' aria-hidden="true" style="color:orange"></fa-icon>
+        <span class="text"></span>
+      </a>
+
+    </li>
+    <li  [class.active]="isFileireClicked">
+      <a (click)="Filiere()">
+        <fa-icon class='bx bxs-dashboard fa fa-file' aria-hidden="true" style="color:orange"></fa-icon>
+        <span class="text"></span>
+      </a>
+    </li>
+    
+    <li  [class.active]="isModuleClicked">
+      <a (click)="Module()">
+        <fa-icon class='bx bxs-dashboard fa fa-book' aria-hidden="true" style="color:orange"></fa-icon>
+        <span class="text"></span>
+      </a>
+    </li>
+  </ul>
+  <ul class="side-menu">
+
+    <li>
+      <a   class="logout">
+        <fa-icon class='bx bxs-dashboard fa fa-sign-out' aria-hidden="true" style="color:orange"></fa-icon>
+        <span class="text"></span>
+      </a>
+    </li>
+  </ul>
+</section>
+<section id="content"></section>
+

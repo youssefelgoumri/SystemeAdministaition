@@ -1,0 +1,449 @@
+<app-sidenav (sidebarToggle)="onSidebarToggle($event)"></app-sidenav>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+</div>
+<div style="margin-top: 80px;" class="head-title">
+  <div class="left">
+    <h1></h1>
+
+  </div>
+  <div class="button-container" >
+  <button   class="custom-btn btn-7" (click)="openFormPopup()"><span>
+    <i  class='bx bxs-cloud-download ' style="font-size: medium;">Add Professeur</i></span>
+  </button>
+</div>
+</div>
+
+
+<div class="mat-elevation-z8" [ngClass]="{ 'expanded': isSidebarOpen === 'open' ,'expandedclose': isSidebarOpen === 'close' }">
+  <table style="margin-top: 10px;"  mat-table [dataSource]="ProfesseurSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+      <td mat-cell *matCellDef="let row"> {{row.nom}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="prenom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Prenom </th>
+      <td mat-cell *matCellDef="let row"> {{row.prenom}} </td>
+    </ng-container>
+
+    <!-- Fruit Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="departement">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Departement </th>
+      <td mat-cell *matCellDef="let row"> {{row.departement}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+      <td mat-cell  *matCellDef="let row">
+        <span (click)="deleteRow(row)" class="status delete"><fa-icon   class="status delete" [icon]="delete"></fa-icon></span>
+
+        <span (click)="updateRow(row)" class="status edit"><fa-icon   class="status edit" [icon]="edit"></fa-icon></span>
+
+        <span (click)="showMoreRow(row)" class="status more"><i class="status more" class="fa fa-eye" aria-hidden="true"></i></span>
+
+      </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter </td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+
+<div class="popup card" *ngIf="isFormPopupOpen">
+  <div class="card-body">
+    <h1 style="color: #3C91E6;">
+      Add Professeur !
+    </h1>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <form (ngSubmit)="addProf()">
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="nom">Nom</label>
+                <input type="text" [(ngModel)]="professeurToAdd.nom" [ngModelOptions]="{standalone: true}"   class="form-control" id="nom" placeholder="Nom">
+              </div>
+              <div class="col-sm-6">
+                <label for="prenom">Prenom</label>
+                <input type="text" [(ngModel)]="professeurToAdd.prenom" [ngModelOptions]="{standalone: true}"    class="form-control" id="prenom" placeholder="prenom" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="email">Email</label>
+                <input type="text" [(ngModel)]="professeurToAdd.email" [ngModelOptions]="{standalone: true}"   class="form-control" id="email" placeholder="Email">
+              </div>
+
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="password">Password</label>
+                <input #passwordInput type="{{ hidePassword ? 'password' : 'text' }}" [(ngModel)]="professeurToAdd.password" [ngModelOptions]="{standalone: true}"    class="form-control" id="password" placeholder="Password">
+
+              </div>
+              <div class="col-sm-6">
+                <label for="confpassword">Confirm Password</label>
+                <input #confirmPasswordInput type="{{ hidePassword ? 'password' : 'text' }}" [(ngModel)]="confpassword"  [ngModelOptions]="{standalone: true}"  class="form-control" id="confpassword" placeholder="password" (input)="checkPasswordsMatch()" [class.password-error]="!passwordsMatch"/>
+
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" (click)="togglePasswordVisibility()">Show Password
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="etab">Etablissement</label>
+                <select id="etab" [(ngModel)]="professeurToAdd.etablissement" [ngModelOptions]="{standalone: true}" class="form-control" >
+                  <option *ngFor="let dept of etablissements" [value]="dept.codeName">{{dept.codeName}}</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <label for="departement">Departement</label>
+                <select id="departement" [(ngModel)]="professeurToAdd.departement" [ngModelOptions]="{standalone: true}" class="form-control" >
+                  <option *ngFor="let dept of departements" [value]="dept">{{dept}}</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <div class="col-sm-6 ">
+                <br />
+
+                <button (click)="addProf()"  type="button" id="submitstyle" class=" btn btn-primary px-4 float-right ">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <a id="close-pop" (click)="closeFormPopup()"
+       class="box-close">
+      ×
+    </a>
+  </div>
+</div>
+
+
+<div class="popup card" *ngIf="isdisciplinaireOpen">
+  <div class="card-body">
+    <h1 style="color: #3C91E6;">
+      Add Discipline !
+    </h1>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <form >
+            <div class="form-group row" *ngFor="let departement of departements">
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="selectedDisciplinaires[departement]" [ngModelOptions]="{standalone: true}" [value]="departement">
+                  <label class="form-check-label">{{departement}}</label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <div class="col-sm-6 ">
+                <br />
+
+                <button (click)="addProfesseur()"  type="button" id="submitstyle" class=" btn btn-primary px-4 float-right ">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <a id="close-pop" (click)="closedisciplinairePopup()"
+       class="box-close">
+      ×
+    </a>
+  </div>
+</div>
+
+<div class="popup card" *ngIf="isFormPopupOpenEdit">
+  <div class="card-body">
+    <h1 style="color: #3C91E6;">
+      Edit Professeur !
+    </h1>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <form >
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="nom">Nom</label>
+                <input type="text" [(ngModel)]="professeurToEdit.nom" [ngModelOptions]="{standalone: true}"   class="form-control" id="nom" placeholder="Nom">
+              </div>
+              <div class="col-sm-6">
+                <label for="prenom">Prenom</label>
+                <input type="text" [(ngModel)]="professeurToEdit.prenom" [ngModelOptions]="{standalone: true}"    class="form-control" id="prenom" placeholder="prenom" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="email">Email</label>
+                <input type="text" [(ngModel)]="professeurToEdit.email" [ngModelOptions]="{standalone: true}"   class="form-control" id="email" placeholder="Email">
+              </div>
+
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="password">Password</label>
+                <input #passwordInput type="{{ hidePassword ? 'password' : 'text' }}" [(ngModel)]="professeurToEdit.password" [ngModelOptions]="{standalone: true}"    class="form-control" id="password" placeholder="Password">
+
+              </div>
+              <div class="col-sm-6">
+                <label for="confpassword">Confirm Password</label>
+                <input #confirmPasswordInput type="{{ hidePassword ? 'password' : 'text' }}" [(ngModel)]="confpassword"  [ngModelOptions]="{standalone: true}"  class="form-control" id="confpassword" placeholder="password" (input)="checkPasswordsMatch()" [class.password-error]="!passwordsMatch"/>
+
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" (click)="togglePasswordVisibility()">Show Password
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="etab">Etablissement</label>
+                <select id="etab" [(ngModel)]="professeurToEdit.etablissement" [ngModelOptions]="{standalone: true}" class="form-control" >
+                  <option *ngFor="let dept of etablissements" [value]="dept.codeName" [selected]="dept.codeName === professeurToEdit.etablissement" >{{dept.codeName}}</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <label for="departement">Departement</label>
+                <select id="departement" [(ngModel)]="professeurToEdit.departement" [ngModelOptions]="{standalone: true}" class="form-control" >
+                  <option *ngFor="let dept of departements" [value]="dept" [selected]="dept === professeurToEdit.departement" >{{dept}}</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <div class="col-sm-6 ">
+                <br />
+
+                <button (click)="editProf()"  type="button" id="submitstyle" class=" btn btn-primary px-4 float-right ">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <a id="close-pop" (click)="closeFormPopupEdit()"
+       class="box-close">
+      ×
+    </a>
+  </div>
+</div>
+
+
+<div class="popup card" *ngIf="isdisciplinaireOpenEdit">
+  <div class="card-body">
+    <h1 style="color: #3C91E6;">
+      Edit Discipline !
+    </h1>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <form >
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input"  type="checkbox" [checked]="db===true" (change)="db = !db"/>
+                  <label class="form-check-label">Département_de_Biologie</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="dc===true" (change)="dc = !dc">
+                  <label class="form-check-label">Département_de_Chimie</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="dg===true" (change)="dg = !dg">
+                  <label class="form-check-label">Département_de_Géologie</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="di===true" (change)="di = !di">
+                  <label class="form-check-label">Département_d_Informatique</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="dm===true" (change)="dm = !dm">
+                  <label class="form-check-label">Département_de_Mathématiques</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="dp===true" (change)="dp = !dp">
+                  <label class="form-check-label">Département_de_Physique</label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <div class="col-sm-6 ">
+                <br />
+
+                <button (click)="EditProfesseur()"  type="button" id="submitstyle" class=" btn btn-primary px-4 float-right ">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <a id="close-pop" (click)="closedisciplinairePopupEdit()"
+       class="box-close">
+      ×
+    </a>
+  </div>
+</div>
+
+
+<div class="popup card" *ngIf="isFormPopupOpenShowMore">
+  <div class="card-body">
+    <h1 style="color: #3C91E6;">
+      Professeur Information !
+    </h1>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <form >
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="password">Password</label>
+                <input type="text" [(ngModel)]="selectedProf.password" [ngModelOptions]="{standalone: true}"    class="form-control" id="password" placeholder="Password" disabled readonly>
+              </div>
+              <div class="col-sm-6">
+                <label for="etab">Etablissement</label>
+                <input type="text" [(ngModel)]="selectedProf.etablissement" [ngModelOptions]="{standalone: true}"    class="form-control" id="etab" placeholder="etab" disabled readonly>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="db===true" disabled readonly>
+                  <label class="form-check-label">Département_de_Biologie</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="dc===true" disabled readonly>
+                  <label class="form-check-label">Département_de_Chimie</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="dg===true" disabled readonly>
+                  <label class="form-check-label">Département_de_Géologie</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="di===true" disabled readonly>
+                  <label class="form-check-label">Département_d_Informatique</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="dm===true" disabled readonly>
+                  <label class="form-check-label">Département_de_Mathématiques</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" >
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" [checked]="dp===true" disabled readonly>
+                  <label class="form-check-label">Département_de_Physique</label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <div class="col-sm-6 ">
+                <br />
+
+                <button (click)="Close()"  type="button" id="submitstyle" class=" btn btn-primary px-4 float-right ">Close</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <a id="close-pop" (click)="Close()"
+       class="box-close">
+      ×
+    </a>
+  </div>
+</div>
+
+

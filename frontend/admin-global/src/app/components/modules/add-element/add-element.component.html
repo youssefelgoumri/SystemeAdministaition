@@ -1,0 +1,28 @@
+<h2 mat-dialog-title class="text-center" style="color: rgb(255, 166, 0);">{{ message }}</h2>
+<mat-dialog-content class="mb-0 pb-0">
+<form [formGroup]="element">
+    <mat-form-field class="example-full-width my-2">
+        <mat-label>Partie cours</mat-label>
+        <input type="text" matInput formControlName="partieCours" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width my-2">
+        <mat-label>Partie TP</mat-label>
+        <input type="text" matInput formControlName="partieTPs" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width my-2">
+        <mat-label>Pourcentage Cours</mat-label>
+        <input type="number" matInput formControlName="coefficientCours" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width my-2">
+        <mat-label>Pourcentage TP</mat-label>
+        <input type="number" matInput formControlName="coefficientTPs" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width my-2">
+        <mat-label>Contribution au module</mat-label>
+        <input type="number" matInput formControlName="controbution" required>
+    </mat-form-field>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex justify-content-center">
+    <button class="custom-btn btn-3" mat-button (click)="send()"><span>Ajouter</span></button>
+</mat-dialog-actions>

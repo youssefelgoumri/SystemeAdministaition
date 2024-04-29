@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <nav class="navbar bg-transparent d-flex justify-content-end">
+    <button class="btn btn-outline-primary" *ngIf="!loggedIn" (click)="openDialog('0ms', '0ms')"><i class="bi bi-box-arrow-in-right"></i> Log In</button>
+  </nav>
+  <h1 class="text-center my-5 pb-5" style="color: rgb(255, 166, 0);">Bienvenue dans notre plateforme!</h1>
+  <div class="card-deck row">
+    <div class="card col mx-5 border-0 shadow-3d">
+      <img src="./assets/img/enLigne.jpeg" class="card-img-top w-100 h-100 p-0" alt="Individual">
+      <div class="card-body">
+        <h3 class="card-title text-center">Inscription en ligne</h3>
+        @if (!loggedIn) {
+        <button class="custom-btn btn-3" (click)="openRegistration('enLigne')"><span>S'inscrire</span></button>
+        }
+        @else {
+          <button type="button" class="btn btn-primary" style="height: 2.5rem; width: 6rem; font-family: 'Lato', sans-serif; font-weight: 500; box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);" (click)="openRegistration('enLigne')" disabled><span>S'inscrire</span></button>
+        }
+      </div>
+    </div>
+    <div class="card col border-0 shadow-3d">
+      <img src="./assets/img/administrative1.jpeg" class="card-img-top w-100 h-100" alt="Company">
+      <div class="card-body">
+        <h3 class="card-title text-center">Inscription administrative</h3>
+        @if (!loggedIn) {
+          <button type="button" class="btn btn-primary" style="height: 2.5rem; width: 6rem; font-family: 'Lato', sans-serif; font-weight: 500; box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);" (click)="openRegistration('administrative')" disabled><span>S'inscrire</span></button>
+        }
+        @else {
+          <button class="custom-btn btn-3" (click)="openRegistration('administrative')"><span>S'inscrire</span></button>
+        }
+        </div>
+    </div>
+    <div class="card col mx-5 border-0 shadow-3d">
+      <img src="./assets/img/pédagogique.jpeg" class="card-img-top w-100 h-100" alt="Organization">
+      <div class="card-body">
+        <h3 class="card-title text-center">Inscription pédagogique</h3>
+        @if (!loggedIn) {
+          <button type="button" class="btn btn-primary" style="height: 2.5rem; width: 6rem; font-family: 'Lato', sans-serif; font-weight: 500; box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);" (click)="openRegistration('pédagogique')" disabled><span>S'inscrire</span></button>
+        }
+        @else {
+          <button class="custom-btn btn-3" (click)="openRegistration('pédagogique')"><span>S'inscrire</span></button>
+        }
+      </div>
+    </div>
+  </div>
+</div>

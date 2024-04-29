@@ -1,0 +1,59 @@
+<div class="container">
+  <h2>Modifier la filière</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" formControlName="nom">
+    </div>
+    <div>
+      <label for="nombreAnnees">Nombre d'années:</label>
+      <input type="number" min="1" id="nombreAnnees" formControlName="nombreAnnees">
+    </div>
+    <div>
+      <label for="nombreSemestresParAnnee">Nombre de semestres par année:</label>
+      <input type="number" min="1" id="nombreSemestresParAnnee" formControlName="nombreSemestresParAnnee">
+    </div>
+    <div>
+      <label for="nomResponsable">Nom du responsable:</label>
+      <input type="text" id="nomResponsable" formControlName="nomResponsable">
+    </div>
+    <div>
+      <label for="prenomResponsable">Prénom du responsable:</label>
+      <input type="text" id="prenomResponsable" formControlName="prenomResponsable">
+    </div>
+
+
+    <div formArrayName="semestres">
+      <div *ngFor="let semestre of semestres.controls; let i=index" [formGroupName]="i">
+        <div>
+          <label for="nomSemestre{{ i }}">Nom du semestre:</label>
+          <input type="text" id="nomSemestre{{ i }}" formControlName="nomSemestre">
+        </div>
+        <button type="button" class="custom-button" (click)="addModule(i)" >Ajouter un module</button>
+
+        <button type="button" class="custom-button" (click)="removeSemestre(i)">Supprimer ce semestre</button>
+
+        <div formArrayName="modulesIds">
+          <div *ngFor="let moduleId of semestre.get('modulesIds')?.value; let j = index">
+            <label>
+              Module {{ j + 1 }}:
+              <input type="text" [formControlName]="j">
+            </label>
+            <button type="button" class="custom-button" (click)="removeModule(i, j)">Supprimer ce module</button>
+            <button type="button" class="custom-button" (click)="addModule(i)">Ajouter un module</button>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <button type="button" class="custom-button" (click)="addSemestre()">Ajouter un semestre</button>
+
+    <mat-dialog-actions class="button-container">
+      <button  class="custom-btn btn-7" ><span>Submit</span></button>
+      <button  class="custom-btn btn-7" (click)="onCancel()"><span>Cancel</span></button>
+    </mat-dialog-actions>
+
+  </form>
+</div>

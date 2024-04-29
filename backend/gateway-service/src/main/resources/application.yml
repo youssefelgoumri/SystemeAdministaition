@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins:
+            - "http://localhost:1111"
+            - "http://localhost:1112"
+            - "http://localhost:4200"
+            allowed-headers: "*"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE

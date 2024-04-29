@@ -1,0 +1,29 @@
+
+<app-sidenav (sidebarToggle)="onSidebarToggle($event)"></app-sidenav>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+</div>
+<!-- <section id="content"> -->
+<div id="content" class="todo" [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+
+    <body>
+        <h1>Annee Universitaire</h1>
+        <button (click)="addNewAnneUniv()">+</button>
+        <ul id="todo-list" *ngFor="let au of anneeUniv">
+            <span (click)="deleteAnnee(au)"  class="status more"><fa-icon   class="status more" [icon]="delete"></fa-icon></span>
+            <!-- <span  class="status more"><fa-icon   class="status more" [icon]="delete"></fa-icon></span> -->
+
+            <li>L'annee Universitaire <span style="font-size: medium; font-style: italic; color: #3C91E6; font-weight: bold;">{{au.anneeUniversitaire}}</span> 
+                est une annee 
+                <span *ngIf="au.anneeCourante===true" style="color: orange;"> courante</span> 
+                <span *ngIf="au.anneeCourante===false" style="color: red;"> Non courante</span>
+                
+            </li>
+            
+            
+        </ul>
+        <!-- <script src="script.js"></script> -->
+    </body>
+</div>
+<!-- </section> -->

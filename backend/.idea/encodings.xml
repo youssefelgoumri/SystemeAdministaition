@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Deliberation-session-ordinaire-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Service-InscriptionAdministrative/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Service-InscriptionEnLigne/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Service-module/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/abscence-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/annee-universitaire-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/deliberation-semestre-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/deliberation-session-rattrapage-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/etablissement-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/etablissement-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-discovery/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-discovery/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/professeur-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/professeur-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reservationSalle-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reservationSalle-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/structure-enseignement-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/validation-param-service/src/main/java" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,46 @@
+<app-sidenav (sidebarToggle)="onSidebarToggle($event)"></app-sidenav>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+</div>
+
+<div class="row d-flex justify-content-center mt-5" [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+
+  <section class="cards">
+    <article class="card card--1">
+      <div class="card__img"></div>
+      <a href="#" class="card_link">
+        <div class="card__img--hover"></div>
+      </a>
+      <div class="card__info">
+        <span class="card__category"> Infos</span>
+        <h3 class="card__title">Students</h3>
+        <span class="card__by">{{etudients.length}}</span>
+      </div>
+    </article>
+    <article class="card card--3">
+      <div class="card__img"></div>
+      <a href="#" class="card_link">
+        <div class="card__img--hover"></div>
+      </a>
+      <div class="card__info">
+        <span class="card__category"> Infos</span>
+        <h3 class="card__title">Salles</h3>
+        <span class="card__by">{{ salles.length }}</span>
+      </div>
+    </article>
+
+    <article class="card card--2">
+      <div class="card__img"></div>
+      <a href="#" class="card_link">
+        <div class="card__img--hover"></div>
+      </a>
+      <div class="card__info">
+        <span class="card__category"> Infos</span>
+        <h3 class="card__title">Professors</h3>
+        <span class="card__by">{{ professeurs.length }}</span>
+      </div>
+    </article>
+  </section>
+</div>
+

@@ -1,0 +1,59 @@
+<div mat-dialog-content class="mat">
+    Add PlanDeValidation with it's elements
+  </div>
+  <div mat-dialog-actions class="mat-dialog-actions">
+    <mat-stepper linear #stepper>
+      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fill out Modules</ng-template>
+          <mat-form-field>
+            <mat-label>Module</mat-label>
+            <mat-select formControlName="moduleId" name="module">
+              <mat-option *ngFor="let module of modules" [value]="module.id">
+                {{module.intitule}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>CNE</mat-label>
+            <input matInput formControlName="cne" placeholder="Module name" required>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Filiere</mat-label>
+            <mat-select formControlName="filiereID" name="filiere">
+              <mat-option *ngFor="let filiere of filieres" [value]="filiere.id">
+                {{filiere.nom}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Semestre</mat-label>
+            <mat-select formControlName="semestreID" required>
+              <mat-option value="s1">Semestre 1</mat-option>
+              <mat-option value="s2">Semestre 2</mat-option>
+              <mat-option value="s3">Semestre 3</mat-option>
+              <mat-option value="s4">Semestre 4</mat-option>
+              <mat-option value="s5">Semestre 5</mat-option>
+              <mat-option value="s6">Semestre 6</mat-option>
+            </mat-select>          
+          </mat-form-field>
+          <div class="button-container">
+            <button class="custom-btn btn-7" (click)="onCancel()"><span>Cancel</span></button>
+            <button class="custom-btn btn-7" matStepperNext  [disabled]="!firstFormGroup.valid" (click)="saveModuleData()"><span>Save</span></button>
+          </div>
+        </form>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p>You are now done.</p>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="send()">Done</button>
+            </div>
+          </mat-step>
+      </mat-step>
+  
+    </mat-stepper>
+  </div>
+  

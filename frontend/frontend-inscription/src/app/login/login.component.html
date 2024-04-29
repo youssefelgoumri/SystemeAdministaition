@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 mat-dialog-title class="text-center" style="color: rgb(255, 166, 0); font-size: 1.5rem;">Log in</h2>
+  <mat-dialog-content class="mb-0 pb-0">
+    <form class="example-form">
+      @if (isClicked && !result && emailFormControl.getRawValue()?.match('')) {
+        <mat-error>email or password is <strong>wrong</strong></mat-error>
+      }
+      <mat-form-field class="example-full-width my-2">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+        @if (emailFormControl.hasError('required')) {
+          <mat-error>Email is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+      
+      <mat-form-field class="example-full-width my-2">
+      <mat-label>Password</mat-label>
+        <input type="password" matInput autocomplete="current-password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
+        @if (passwordFormControl.hasError('required')) {
+          <mat-error>Password is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="custom-btn btn-3" mat-button (click)="login()"><span>Login</span></button>
+  </mat-dialog-actions>
+</div>

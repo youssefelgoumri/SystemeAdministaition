@@ -1,0 +1,147 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <section id="sidebar" *ngIf="!isSideBarOpen" >
+    <a id="close-pop" class="box-close" (click)="openPopup()">
+
+      <i class="fa fa-window-close" aria-hidden="true"></i>
+    </a>
+    <img src="assets/images/logo-UMI-Amazigh-removebg-preview.png">
+
+    <a class="brand">
+      <i class='bx bxs-smile'></i>
+      <span class="text">Systeme Interne</span>
+    </a>
+    <ul class="side-menu top">
+      <li [class.active]="isClickeddashboard">
+        <a (click)="dashboard()">
+          <fa-icon class='bx bxs-dashboard' [icon]="faDashboard" style="color:orange"></fa-icon>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li [class.active]="isClickedprofesseur" >
+      <a (click)="professeur()" >
+  <!--        <i class='bx bxs-message-dots fa fa-university' ></i>-->
+          <fa-icon class='bx bxs-shopping-bag-alt fa fa-university' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text">Professeurs</span>
+
+        </a>
+      </li>
+      <li [class.active]="isClickedabsence" >
+        <a (click)="absenceadmin()" >
+          <!--        <i class='bx bxs-message-dots fa fa-university' ></i>-->
+          <fa-icon class='bx bxs-shopping-bag-alt fa fa-pencil-square-o' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text">Consultation d'Absence </span>
+
+        </a>
+      </li>
+      <li [class.active]="isGestionRessourcesClicked">
+        <a (click)="navigateToSalles()">
+          <fa-icon class='bx bxs-shopping-bag-alt fa fa-tasks' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text">Gestion des salles</span>
+        </a>
+      </li>
+      <li [class.active]="isConsultationClicked">
+        <a (click)="consultations()">
+          <fa-icon class='bx bxs-shopping-bag-alt fa fa-wrench' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text">Consultations</span>
+        </a>
+        <ul *ngIf="isConsultationClicked" class="nested-menu">
+          <a (click)="navigateToFreeSalles()">
+            <fa-icon class='bx bxs-shopping-bag-alt fa fa-dot-circle-o' aria-hidden="true" style="color:orange"></fa-icon>
+            <span class="text">Free Salles</span>
+          </a>
+          <a (click)="navigateToReservedSalles()">
+            <fa-icon class='bx bxs-shopping-bag-alt fa fa-dot-circle-o' aria-hidden="true" style="color:orange"></fa-icon>
+            <span class="text">Reserved Salles</span>
+          </a>
+          <a (click)="navigateToReservedByProf()">
+            <fa-icon class='bx bxs-shopping-bag-alt fa fa-dot-circle-o' aria-hidden="true" style="color:orange"></fa-icon>
+            <span class="text">Professors's Reservations</span>
+          </a>
+        </ul>
+      </li>
+
+
+      <li [class.active]="isDeliberationClicked">
+        <a (click)="deliberation()">
+          <fa-icon class='bx bxs-shopping-bag-alt fa fa-sticky-note' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text">Deliberation</span>
+        </a>
+        <ul *ngIf="isDeliberationClicked" class="nested-menu">
+          <a (click)="navigateToDeliberationOrdinaire()">
+            <fa-icon class='bx bxs-shopping-bag-alt fa fa-dot-circle-o' aria-hidden="true" style="color:orange"></fa-icon>
+            <span class="text">Deliberation Ordinaire</span>
+          </a>
+          <a (click)="navigateToDeliberationRattrapage()">
+            <fa-icon class='bx bxs-shopping-bag-alt fa fa-dot-circle-o' aria-hidden="true" style="color:orange"></fa-icon>
+            <span class="text">Deliberation Rattrapage</span>
+          </a>
+          <a (click)="navigateToDeliberationSemestre()">
+            <fa-icon class='bx bxs-shopping-bag-alt fa fa-dot-circle-o' aria-hidden="true" style="color:orange"></fa-icon>
+            <span class="text">Deliberation Semestre</span>
+          </a>
+
+        </ul>
+      </li>
+
+    </ul>
+
+
+    <ul class="side-menu">
+      <li [ngClass]="{ 'active': isClickedanneeuniv}">
+        <a  (click)="anneeuniv()">
+          <fa-icon class='bx bxs-dashboard fa fa-cog' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text">Annee Univ</span>
+        </a>
+      </li>
+      <li>
+        <a   class="logout" (click)="logout()">
+          <fa-icon class='bx bxs-dashboard fa fa-sign-out' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <section id="close" *ngIf="isSideBarOpen">
+    <a id="open-pop" class="box-close" (click)="closePopup()">
+
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </a>
+    <a class="brand">
+      <i class='bx bxs-smile'></i>
+      <span class="text"></span>
+    </a>
+    <ul class="side-menu top">
+      <li [class.active]="isClickeddashboard">
+        <a (click)="dashboard()">
+          <fa-icon class='bx bxs-dashboard' [icon]="faDashboard" style="color:orange"></fa-icon>
+          <span class="text"></span>
+        </a>
+      </li>
+      <li [ngClass]="{ 'active': isClickedprofesseur}" >
+        <a (click)="professeur()">
+            <fa-icon class='bx bxs-dashboard fa fa-dot-circle-o' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text"></span>
+        </a>
+
+      </li>
+
+    </ul>
+    <ul class="side-menu">
+      <li [ngClass]="{ 'active': isClickedanneeuniv}">
+        <a  (click)="anneeuniv()">
+          <fa-icon class='bx bxs-dashboard fa fa-cog' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text"></span>
+        </a>
+      </li>
+      <li>
+        <a   class="logout">
+          <fa-icon class='bx bxs-dashboard fa fa-sign-out' aria-hidden="true" style="color:orange"></fa-icon>
+          <span class="text"></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <section id="content"></section>
+

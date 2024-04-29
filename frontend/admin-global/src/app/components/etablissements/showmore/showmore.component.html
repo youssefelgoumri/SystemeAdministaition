@@ -1,0 +1,74 @@
+<app-sidebar (sidebarToggle)="onSidebarToggle($event)"></app-sidebar>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+
+</div>
+<div style="margin-top: 80px;" class="head-title">
+  <div class="left">
+    <h1></h1>
+
+  </div>
+  <div class="button-container">
+  <button (click)="return()"  class="custom-btn btn-7" >
+    <i  class='bx bxs-cloud-download ' style="font-size: medium;"><span>Return</span></i>
+    <!-- <span  class="text">Add Etablissement</span> -->
+  </button>
+</div></div>
+  <div class="mat-elevation-z8" [ngClass]="{ 'expanded': isSidebarOpen === 'open' ,'expandedclose': isSidebarOpen === 'close' }">
+    <table style="margin-top: 10px;"  mat-table [dataSource]="FilieresSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+        <td mat-cell *matCellDef="let row"> {{row.nom}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombreAnnees">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> nombreAnnees </th>
+        <td mat-cell *matCellDef="let row"> {{row.nombreAnnees}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="nombreSemestresParAnnee">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> nombreSemestresParAnnee </th>
+        <td mat-cell *matCellDef="let row"> {{row.nombreSemestresParAnnee}} </td>
+      </ng-container>
+      <ng-container matColumnDef="responsable">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> responsable </th>
+        <td mat-cell *matCellDef="let row"> {{row.responsable.nom}} {{row.responsable.prenom}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+        <td mat-cell  *matCellDef="let row">
+
+          <span (click)="deleteRow(row)" class="status delete"><fa-icon   class="status delete" [icon]="delete"></fa-icon></span>
+
+          <!-- <span (click)="updateRow(row)" class="status edit"><fa-icon   class="status edit" [icon]="edit"></fa-icon></span> -->
+
+          <span (click)="showMoreRow(row)" class="status more"><i class="status more" class="fa fa-eye" aria-hidden="true"></i></span>
+
+        </td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter </td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+

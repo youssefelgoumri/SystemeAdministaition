@@ -1,0 +1,156 @@
+.welcomeBody{
+  background-color: rgb(57, 151, 239);
+  color:white;
+  margin: 0%;
+  padding: 0%;
+}
+
+.landingpage{
+  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5OJ1vKO84iQD_1d3kwADSun9d7XAQuq8-tRkJEaJRQwhG3cdSH3KV9B-0tBqvSvMu6Wq8HpUdFZ7mtxD2CiRZtGhUA52J16NfAbyEQpr-jgLGdasEFOMwtU-iIRBpCKcdIJYSuMSDDzg/s1600/UMI.jpg");
+  background-size: cover;
+  margin-top: 0px;
+  width: auto;
+  padding-bottom: 17%;
+}
+
+.textbig{
+  font-size: 60px;
+  color: #FB4B02FF;
+}
+/**
+@media screen and (max-width: 50%){
+
+}
+*/
+.aboutart{
+  padding-top: 10%;
+}
+
+.aboutimg{
+  height: 100%;
+  width: 100%;
+}
+
+.about h1{
+  color: rgb(255, 255, 255);
+}
+
+.about a:hover{
+  text-decoration-line: none;
+}
+
+.contact{
+  background-image: url("https://image.ibb.co/mAYtZQ/laptop1.jpg");
+  background-size: cover;
+  padding: 10% 0%;
+  margin-top: -3%;
+}
+
+.contact button{
+  margin-bottom: 1em;
+}
+
+footer{
+  background-color: rgb(57, 151, 239);
+  color:black;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+.custom-btn {
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-7 {
+  background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-7 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: rgba(2,126,251,1);
+  box-shadow:
+    -7px -7px 20px 0px rgba(255,255,255,.9),
+    -4px -4px 5px 0px rgba(255,255,255,.9),
+    7px 7px 20px 0px rgba(0,0,0,.2),
+    4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7:before{
+  height: 0%;
+  width: 2px;
+}
+.btn-7:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-7:hover{
+  color: rgba(251,75,2,1);
+  background: transparent;
+}
+.btn-7:hover:before {
+  height: 100%;
+}
+.btn-7:hover:after {
+  width: 100%;
+}
+.btn-7 span:before,
+.btn-7 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgba(2,126,251,1);
+  box-shadow:
+    -7px -7px 20px 0px rgba(255,255,255,.9),
+    -4px -4px 5px 0px rgba(255,255,255,.9),
+    7px 7px 20px 0px rgba(0,0,0,.2),
+    4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-7 span:after {
+  height: 2px;
+  width: 0%;
+}
+.btn-7 span:hover:before {
+  height: 100%;
+}
+.btn-7 span:hover:after {
+  width: 100%;
+}

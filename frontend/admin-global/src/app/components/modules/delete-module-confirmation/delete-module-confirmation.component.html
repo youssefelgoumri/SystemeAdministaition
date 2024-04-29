@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>Confirmation</h2>
+<mat-dialog-content>{{ message }}</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <mat-button mat-button class="custom-btn btn-3 text-center mx-2" mat-dialog-close><span>Non</span></mat-button>
+    <mat-button mat-button class="custom-btn btn-3 text-center" mat-dialog-close (click)="accepter()"><span>Oui</span></mat-button>
+</mat-dialog-actions>

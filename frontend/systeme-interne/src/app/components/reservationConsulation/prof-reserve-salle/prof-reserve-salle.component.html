@@ -1,0 +1,34 @@
+<app-sidenav (sidebarToggle)="onSidebarToggle($event)"></app-sidenav>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+</div>
+
+<h2  class="h1" [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">Professor's Reservations</h2>
+<!-- Input field for entering professor ID -->
+<div class="form-container" [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <mat-form-field appearance="outline" class="example-form-field">
+    <mat-label>Professor Id</mat-label>
+    <input matInput type="number" [(ngModel)]="profId" min="1">
+    <button *ngIf="profId" matSuffix mat-icon-button aria-label="Clear" (click)="profId=null">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <div class="button-container">
+    <button  class="custom-btn btn-7" (click)="fetchReservations()"><span>Get</span></button>
+  </div>
+</div>
+<div *ngIf="reservations.length > 0" [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <h2 class="h2">List of salles reserved by professor :{{profId}}</h2>
+  <div class="card-container">
+    <div *ngFor="let reservation of reservations" class="card">
+      <p>Reservation ID: {{ reservation.id }}</p>
+      <p>Professor ID: {{ reservation.idProfesseur }}</p>
+      <p>Salle Name: {{ reservation.salle?.nom }}</p>
+      <p>Salle Type: {{ reservation.salle?.typeSalle }}</p>
+      <p>Start Date: {{ reservation.date_debut |  date: 'MMM d, y, HH:mm'}}</p>
+      <p>End Date: {{ reservation.date_fin | date: 'MMM d, y, HH:mm' }}</p>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,95 @@
+<div mat-dialog-content class="mat">
+    Ajouter les notes d'element
+  </div>
+  <div mat-dialog-actions class="mat-dialog-actions">
+    <mat-stepper linear #stepper>
+      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fill out Modules</ng-template>
+          <mat-form-field>
+            <mat-label>Module</mat-label>
+            <mat-select formControlName="moduleId" name="module">
+              <mat-option *ngFor="let module of modules" [value]="module.id">
+                {{module.intitule}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>CNE</mat-label>
+            <input matInput formControlName="cne" placeholder="Module name" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Filiere</mat-label>
+            <mat-select formControlName="filiereID" name="filiere">
+              <mat-option *ngFor="let filiere of filieres" [value]="filiere.id">
+                {{filiere.nom}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Semestre</mat-label>
+            <mat-select formControlName="semestreID" required>
+              <mat-option value="s1">Semestre 1</mat-option>
+              <mat-option value="s2">Semestre 2</mat-option>
+              <mat-option value="s3">Semestre 3</mat-option>
+              <mat-option value="s4">Semestre 4</mat-option>
+              <mat-option value="s5">Semestre 5</mat-option>
+              <mat-option value="s6">Semestre 6</mat-option>
+            </mat-select>          
+          </mat-form-field>
+          <div class="button-container">
+            <button class="custom-btn btn-7" (click)="onCancel()"><span>Cancel</span></button>
+            <button class="custom-btn btn-7" matStepperNext  [disabled]="!firstFormGroup.valid" (click)="saveModuleData()"><span>Next</span></button>
+          </div>
+        </form>
+      </mat-step>
+  
+  
+      <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Fill out the elementID</ng-template>
+
+          <mat-form-field>
+            <mat-label>Element</mat-label>
+            <mat-select formControlName="elementId" name="element">
+              <mat-option *ngFor="let element of elements" [value]="element.id">
+                {{element.partieCours}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext (click)="saveElementData()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Notes</ng-template>
+        <mat-form-field>
+            <mat-label>noteExam</mat-label>
+            <input matInput formControlName="noteExam" placeholder="note exam"
+                   required>
+                   <mat-error *ngIf="thirdFormGroup.get('noteExam')?.hasError('required')">Note is required</mat-error>
+                  <mat-error *ngIf="thirdFormGroup.get('noteExam')?.hasError('pattern')">Note must be a number</mat-error>
+                  <mat-error *ngIf="thirdFormGroup.get('noteExam')?.hasError('min') || thirdFormGroup.get('noteExam')?.hasError('max')">Note must be between 0 and 20</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>noteTP</mat-label>
+            <input matInput formControlName="noteTP" placeholder="note tp"
+                   required>
+          </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="send()">Done</button>
+        </div>
+        </form>
+
+      </mat-step>
+    </mat-stepper>
+  </div>
+  

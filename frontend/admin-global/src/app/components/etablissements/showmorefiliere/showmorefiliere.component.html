@@ -1,0 +1,49 @@
+<app-sidebar (sidebarToggle)="onSidebarToggle($event)"></app-sidebar>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+
+</div>
+
+<div style="margin-top: 80px;" class="head-title">
+  <div class="left">
+    <h1>
+    </h1>
+
+  </div>
+  <div class="button-container">
+  <button (click)="return()"  class="custom-btn btn-7" >
+    <i  class='bx bxs-cloud-download ' style="font-size: medium;"><span>Return</span></i>
+    <!-- <span  class="text">Add Etablissement</span> -->
+  </button>
+</div></div>
+
+<div [ngClass]="{ 'expanded': isSidebarOpen === 'open' ,'expandedclose': isSidebarOpen === 'close' }" *ngFor="let filiere of etablissement.filieres">
+   <div *ngIf="filiere.id === idfiliere" >
+    <div >
+      <h1 style="color: orange;">
+        Filiere : {{filiere.nom}}
+      </h1>
+  
+    <div *ngFor="let semester of filiere.semestres">
+      <div style="margin-top: 5px; margin-left: 5px;" >
+       <mat-card class="example-card" >
+        <mat-card-header>
+         <mat-card-title>{{ semester.nomSemestre }}</mat-card-title>
+         <mat-card-subtitle style="color: #3C91E6;">semestre ID : {{ semester.id }}</mat-card-subtitle>
+       </mat-card-header> 
+        <div *ngFor="let mod of semester.modules">
+          
+         <mat-card-content>
+          <ul>
+           <li>{{mod.intitule}}</li>
+          </ul>
+         </mat-card-content></div>
+         
+        </mat-card>
+       </div> 
+       </div>
+    </div>
+   </div>
+  </div>
+  

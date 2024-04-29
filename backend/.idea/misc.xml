@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/eureka-discovery/pom.xml" />
+        <option value="$PROJECT_DIR$/etablissement-service/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/professeur-service/pom.xml" />
+        <option value="$PROJECT_DIR$/reservationSalle-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Deliberation-session-ordinaire-service/pom.xml" />
+        <option value="$PROJECT_DIR$/annee-universitaire-service/pom.xml" />
+        <option value="$PROJECT_DIR$/deliberation-session-rattrapage-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Service-module/pom.xml" />
+        <option value="$PROJECT_DIR$/validation-param-service/pom.xml" />
+        <option value="$PROJECT_DIR$/deliberation-semestre-service/pom.xml" />
+        <option value="$PROJECT_DIR$/structure-enseignement-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Service-InscriptionEnLigne/pom.xml" />
+        <option value="$PROJECT_DIR$/Service-InscriptionAdministrative/pom.xml" />
+        <option value="$PROJECT_DIR$/abscence-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,244 @@
+/* Règles générales */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  color: #333;
+}
+
+/* Conteneur principal */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  color: #ef603b;
+  font-family: Roboto, sans-serif;
+}
+/* En-tête du formulaire */
+.header {
+  background-color: #3f51b5;
+  color: white;
+  padding: 1em;
+  border-radius: 5px 5px 0 0;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+/* Formulaire */
+.form-group {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 1em;
+  color: #3f51b5;
+}
+
+.input-field {
+  flex: 1;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.input-field:focus {
+  border-color: #4caf50;
+}
+.custom-button {
+  background-color: rgba(10, 119, 225, 0.8); /* Example: pink background color */
+  color: white; /* Example: white text color */
+  margin: 10px 5px;
+
+}
+/* CSS pour les champs de formulaire */
+input[type="text"],
+input[type="number"] {
+  width: 100%; /* Utilise la largeur maximale disponible */
+  padding: 8px; /* Ajoute un espacement interne */
+  margin-bottom: 10px; /* Ajoute un espacement en bas */
+  border: 1px solid #ccc; /* Ajoute une bordure */
+  border-radius: 4px; /* Ajoute un arrondi aux coins */
+  box-sizing: border-box; /* Inclus la bordure et le rembourrage dans la largeur totale */
+}
+
+/* Boutons */
+.button {
+  background-color: rgba(3, 75, 145, 0.8);
+  border: none;
+  color: white;
+  padding: 0.8em 1.5em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.mat-dialog-actions {
+  justify-content: space-between;
+  padding: 5px;
+}
+
+/* En-tête du formulaire */
+.header {
+  background-color: #3f51b5;
+  color: white;
+  padding: 1em;
+  border-radius: 5px 5px 0 0;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+/* Pied de formulaire */
+.footer {
+  background-color: #3f51b5;
+  color: white;
+  padding: 1em;
+  border-radius: 0 0 5px 5px;
+}
+
+.footer button {
+  float: right;
+}
+
+.mat {
+  text-align: center;
+  text-decoration-style: solid;
+  color: #3c91e6ff;
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.button-container {
+  color:#3c91e6ff;
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+
+.custom-btn {
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(3, 75, 145, 0.8),
+  7px 7px 20px 0px rgba(0, 0, 0, .1),
+  4px 4px 5px 0px rgba(0, 0, 0, .1);
+  outline: none;
+}
+
+.btn-7 {
+  background: linear-gradient(0deg, rgba(255, 151, 0, 1) 0%, rgba(251, 75, 2, 1) 100%);
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+
+.btn-7 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: rgba(2, 126, 251, 1);
+  box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, .9),
+  -4px -4px 5px 0px rgba(255, 255, 255, .9),
+  7px 7px 20px 0px rgba(0, 0, 0, .2),
+  4px 4px 5px 0px rgba(0, 0, 0, .3);
+  transition: all 0.3s ease;
+}
+
+.btn-7:before {
+  height: 0%;
+  width: 2px;
+}
+
+.btn-7:after {
+  width: 0%;
+  height: 2px;
+}
+
+.btn-7:hover {
+  color: rgba(251, 75, 2, 1);
+  background: transparent;
+}
+
+.btn-7:hover:before {
+  height: 100%;
+}
+
+.btn-7:hover:after {
+  width: 100%;
+}
+
+.btn-7 span:before,
+.btn-7 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgba(2, 126, 251, 1);
+  box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, .9),
+  -4px -4px 5px 0px rgba(255, 255, 255, .9),
+  7px 7px 20px 0px rgba(0, 0, 0, .2),
+  4px 4px 5px 0px rgba(0, 0, 0, .3);
+  transition: all 0.3s ease;
+}
+
+.btn-7 span:before {
+  width: 2px;
+  height: 0%;
+}
+
+.btn-7 span:after {
+  height: 2px;
+  width: 0%;
+}
+
+.btn-7 span:hover:before {
+  height: 100%;
+}
+
+.btn-7 span:hover:after {
+  width: 100%;
+}

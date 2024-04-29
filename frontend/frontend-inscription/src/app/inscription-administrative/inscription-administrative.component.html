@@ -1,0 +1,177 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <h1 mat-h1 class="my-5 text-primary">Bienvenue dans la plateforme d'inscription administrative</h1>
+    </div>
+    <div class="d-flex justify-content-center" *ngIf="!etudiant">
+        <mat-form-field class="col-6 mx-auto mt-5" appearance="outline" color="primary">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput type="search" [(ngModel)]="massar" placeholder="Ajouter un(e) étudiant(e) déjà inscrit(e) en ligne en tapant son CNE..." (keyup)="onKeyUp($event)">
+        </mat-form-field>
+    </div>
+    <div *ngIf="etudiant">
+        <form [formGroup]="infosEtudiant">
+            <div class="row">
+              <mat-form-field class="col">
+                <mat-label>Nom en Arabe</mat-label>
+                <input matInput placeholder="الإسم العائلي" [readonly]="!isEditMode" formControlName="nomEnArabe" dir="rtl" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Prénom en Arabe</mat-label>
+                <input matInput placeholder="الإسم الشخصي" [readonly]="!isEditMode" formControlName="prénomEnArabe" dir="rtl" required>
+              </mat-form-field>        
+              <mat-form-field class="col">
+                <mat-label>Lieu de naissance en Arabe</mat-label>
+                <input matInput placeholder="مكان الإزدياد" [readonly]="!isEditMode" formControlName="lieuDeNaissanceEnArabe" dir="rtl" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>CIN</mat-label>
+                <input matInput placeholder="Carte d'idendité nationale" [readonly]="!isEditMode" formControlName="cin" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Nationalité</mat-label>
+                <input matInput placeholder="nationalité" [readonly]="!isEditMode" formControlName="nationalité" required>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="col">
+                <mat-label>Nom en Français</mat-label>
+                <input matInput placeholder="Nom" [readonly]="!isEditMode" formControlName="nomEnFrançais" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Prénom en Français</mat-label>
+                <input matInput placeholder="Prénom" [readonly]="!isEditMode" formControlName="prénomEnFrançais" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Lieu de naissance en Français</mat-label>
+                <input matInput placeholder="Lieu de naissance" [readonly]="!isEditMode" formControlName="lieuDeNaissanceEnFrançais" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Ville</mat-label>
+                <input matInput placeholder="Ville" [readonly]="!isEditMode" formControlName="ville" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Province</mat-label>
+                <input matInput placeholder="Province" [readonly]="!isEditMode" formControlName="province" required>
+              </mat-form-field>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <mat-form-field class="col">
+                <mat-label>Massar</mat-label>
+                <input matInput placeholder="CNE ou Massar" [readonly]="!isEditMode" formControlName="massar" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Date de naissance</mat-label>
+                <input matInput [readonly]="!isEditMode" formControlName="dateDeNaissance" required>
+                <mat-hint>DD/MM/YYYY</mat-hint>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Année universitaire</mat-label>
+                <input matInput placeholder="Année universitaire courante" readonly formControlName="anneeUniversitaire" required>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>Étape</mat-label>
+                <input matInput placeholder="Quelle année...Quel niveau" [readonly]="!isEditMode" formControlName="etape" required>
+                <mat-hint>1ére année Master</mat-hint>
+              </mat-form-field>
+              <mat-form-field class="col">
+                <mat-label>N° téléphone</mat-label>
+                <input matInput type="tel" placeholder="+212......" [readonly]="!isEditMode" formControlName="telephone" required>
+              </mat-form-field>
+            </div>
+            <div class="row my-3">
+                <div class="col d-flex justify-content-center align-items-center">
+                    <mat-label>Sexe:</mat-label>
+                    <mat-radio-group [(ngModel)]="sexe" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [disabled]="!isEditMode" value="Homme">Homme</mat-radio-button>
+                      <mat-radio-button [disabled]="!isEditMode" value="Femme">Femme</mat-radio-button>
+                    </mat-radio-group>                  
+                </div>
+                <div class="col d-flex justify-content-center align-items-center">
+                    <mat-label>Bourse:</mat-label>
+                    <mat-radio-group [(ngModel)]="bourse" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [disabled]="!isEditMode" value="true">Oui</mat-radio-button>
+                      <mat-radio-button [disabled]="!isEditMode" value="false">Non</mat-radio-button>
+                    </mat-radio-group>                  
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <mat-form-field class="col">
+                    <mat-label>Adresse personnelle</mat-label>
+                    <input matInput placeholder="Ex.40 Rue elMoujahid Qu Anass, Tanger" [readonly]="!isEditMode" formControlName="adressePersonnelle" required>
+                </mat-form-field>
+                <mat-form-field class="col">
+                    <mat-label>Adresse parents</mat-label>
+                    <input matInput placeholder="Ex.40 Rue elMoujahid Qu Anass, Tanger" [readonly]="!isEditMode" formControlName="adresseParents" required>
+                </mat-form-field>
+                <mat-form-field class="col">
+                    <mat-label>Mail</mat-label>
+                    <input matInput type="email" placeholder="Ex.exemple@exemple.exemple" [readonly]="!isEditMode" formControlName="mail" required>
+                </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="col-4">
+                <mat-label>Année d'obention du Bac</mat-label>
+                <input matInput type="number" formControlName="annéeBac" [readonly]="!isEditMode" placeholder="Quand vous avez obetenu votre Baccalauréat?" required>
+              </mat-form-field>
+              <mat-form-field class="col-3">
+                <mat-label>Série du Bac</mat-label>
+                <input matInput formControlName="sérieBac" [readonly]="!isEditMode" placeholder="Votre série de Baccalauréat" required>
+              </mat-form-field>
+              <mat-form-field class="col-2">
+                <mat-label>Mention</mat-label>
+                <input matInput formControlName="mention" [readonly]="!isEditMode" placeholder="Ex. Bien" required>
+              </mat-form-field>
+              <mat-form-field class="col-3">
+                <mat-label>Lycée</mat-label>
+                <input matInput formControlName="lycée" [readonly]="!isEditMode" placeholder="Ex. Hassan II" required>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="col-4">
+                <mat-label>Lieu</mat-label>
+                <input matInput formControlName="lieu" [readonly]="!isEditMode" placeholder="Lieu d'obtention de votre Baccalauréat" required>
+              </mat-form-field>
+              <mat-form-field class="col-3">
+                <mat-label>Académie</mat-label>
+                <input matInput formControlName="académie" [readonly]="!isEditMode" placeholder="Ex. Marrakech-Safi" required>
+              </mat-form-field>
+            </div>
+          </form>
+          <div class="d-flex justify-content-center mt-5" *ngIf="diplomes.length > 0">
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th>Diplôme</th>
+                  <th>Spécialité</th>
+                  <th>Mention</th>
+                  <th>Ville</th>
+                  <th>Date d'optention</th>
+                  <th>Université</th>
+                  <th>Etablissement</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let diplome of diplomes">
+                  <td>{{ diplome.diplome }}</td>
+                  <td>{{ diplome.specialite }}</td>
+                  <td>{{ diplome.mention }}</td>
+                  <td>{{ diplome.ville }}</td>
+                  <td>{{ diplome.dateObtention }}</td>
+                  <td>{{ diplome.universite }}</td>
+                  <td>{{ diplome.etablissement }}</td>
+                  <td>
+                    <button mat-button class="bg-body" (click)="modifierDiplome(diplome.id)"><mat-icon style="color: blue;">update</mat-icon></button>
+                    <button mat-button class="bg-body" (click)="supprimerDiplome(diplome.id)"><mat-icon color="warn">delete</mat-icon></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+          <div class="d-flex justify-content-center mt-3">
+            <button mat-button class="custom-btn btn-3 m-2" (click)="modifierEtudiant()"><span>{{ isEditMode ? 'Enregistrer' : 'Modifier' }}</span></button>
+            <button mat-button class="custom-btn btn-3 m-2" (click)="confirmDelete()"><span>Supprimer</span></button>
+            <button mat-button class="custom-btn btn-3 m-2" (click)="ajouterDiplome()"><span>Ajouter Diplôme</span></button>
+        </div>
+    </div>
+</div>

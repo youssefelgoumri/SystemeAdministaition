@@ -1,0 +1,63 @@
+<div mat-dialog-content class="mat">
+  Add Etablissements with it's items
+</div>
+<div mat-dialog-actions class="mat-dialog-actions">
+  <mat-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out Etablissement</ng-template>
+        <mat-form-field>
+          <mat-label>Code Name</mat-label>
+          <input matInput formControlName="firstCtrl" [(ngModel)]="etablissement.codeName" placeholder="id" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput   formControlName="firstCtrl" [(ngModel)]="etablissement.nom" placeholder="Etablissement name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label> Ville </mat-label>
+          <input matInput  formControlName="firstCtrl" [(ngModel)]="etablissement.ville" placeholder="ville" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Discipline</mat-label>
+          <input matInput formControlName="firstCtrl" [(ngModel)]="etablissement.discipline" placeholder="Discipline" >
+        </mat-form-field>
+        <div class="button-container">
+          <button class="custom-btn btn-7" (click)="onCancel()"><span>Cancel</span></button>
+          <button class="custom-btn btn-7" matStepperNext  [disabled]="!firstFormGroup.valid"><span>Next</span></button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out Filieres</ng-template>
+        <mat-form-field>
+          <mat-label>Filiere</mat-label>
+          <mat-select [formControl]="secondFormGroup.controls.toppings" multiple>
+            <mat-select-trigger>
+              {{secondFormGroup.controls.toppings.value?.[0] || ''}}
+              <span *ngIf="(secondFormGroup.controls.toppings.value?.length || 0) > 1" class="example-additional-selection">
+                (+{{(secondFormGroup.controls.toppings.value?.length || 0) - 1}} {{secondFormGroup.controls.toppings.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let topping of filieres" [value]="topping.nom">{{topping.nom}}</mat-option>
+          </mat-select>
+          
+        </mat-form-field>
+        <div>
+          <button class="custom-btn btn-7" matStepperNext ><span> Next</span></button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button class="custom-btn btn-7" (click)="addEtablissement()">Add</button>
+        <button class="custom-btn btn-7" (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

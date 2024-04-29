@@ -1,0 +1,157 @@
+.edit-title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: rgba(2,126,251,1);
+  margin-top: 10px;
+}
+.form-container {
+  width: 100%;
+  max-width: 400px; /* Adjust the width as needed */
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.form-group label {
+  width: 100px; /* Adjust the width of labels as needed */
+  margin-right: 10px;
+}
+
+
+
+.form-group input,
+.form-group mat-form-field {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.form-group mat-form-field .mat-form-field-flex {
+  height: 20px; /* Adjust the height as needed */
+}
+
+.mat-select-panel {
+  max-height: 100px; /* Adjust the max-height of the dropdown panel */
+}
+
+.form-group span {
+  width: calc(100% - 20px); /* Adjust for padding */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensure consistent box-sizing */
+}
+
+.button-group {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.custom-btn {
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+.custom-btn {
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-7 {
+  background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-7 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: rgba(2,126,251,1);
+  box-shadow:
+    -7px -7px 20px 0px rgba(255,255,255,.9),
+    -4px -4px 5px 0px rgba(255,255,255,.9),
+    7px 7px 20px 0px rgba(0,0,0,.2),
+    4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7:before{
+  height: 0%;
+  width: 2px;
+}
+.btn-7:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-7:hover{
+  color: rgba(251,75,2,1);
+  background: transparent;
+}
+.btn-7:hover:before {
+  height: 100%;
+}
+.btn-7:hover:after {
+  width: 100%;
+}
+.btn-7 span:before,
+.btn-7 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgba(2,126,251,1);
+  box-shadow:
+    -7px -7px 20px 0px rgba(255,255,255,.9),
+    -4px -4px 5px 0px rgba(255,255,255,.9),
+    7px 7px 20px 0px rgba(0,0,0,.2),
+    4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-7 span:after {
+  height: 2px;
+  width: 0%;
+}
+.btn-7 span:hover:before {
+  height: 100%;
+}
+.btn-7 span:hover:after {
+  width: 100%;
+}
+

@@ -1,0 +1,113 @@
+<app-sidenav (sidebarToggle)="onSidebarToggle($event)"></app-sidenav>
+<!--<app-sidebar></app-sidebar>-->
+<div  [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }">
+  <app-headerapp (searchItem)="applyFilter($event)"></app-headerapp>
+</div>
+
+<h1 class="h1" [ngClass]="{ 'expanded': isSidebarOpen === 'open' , 'expandedclose': isSidebarOpen === 'close' }" >Les notes des éléments</h1>
+
+<div style="margin-top: 80px;" class="head-title">
+  <div class="left">
+    <h1></h1>
+
+  </div>
+  <div class="button-container" >
+        <button   class="custom-btn btn-7" (click)="add()"><span>
+            <i  class='bx bxs-cloud-download ' style="font-size: medium;">Add Note Element</i></span>
+        </button>
+    </div>
+
+    <div class="button-container" >
+        <button   class="custom-btn btn-7" (click)="openPVModule()"><span>
+        <i  class='bx bxs-cloud-download ' style="font-size: medium;">Module</i></span>
+        </button>
+    </div>
+
+    <div class="button-container" >
+        <button   class="custom-btn btn-7" (click)="exporterPVtoexcel()"><span>
+        <i  class='bx bxs-cloud-download ' style="font-size: medium;">Exporter notes</i></span>
+        </button>
+    </div>
+</div>
+
+
+
+<div class="mat-elevation-z8" [ngClass]="{ 'expanded': isSidebarOpen === 'open' ,'expandedclose': isSidebarOpen === 'close' }">
+    <table style="margin-top: 10px;"  mat-table [dataSource]="PlanDeValidationSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="CNE">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CNE </th>
+        <td mat-cell *matCellDef="let row"> {{row.cne}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="moduleIntitule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Module </th>
+        <td mat-cell *matCellDef="let row"> {{row.moduleIntitule}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="semestre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Semestre </th>
+        <td mat-cell *matCellDef="let row"> {{row.semestreID}} </td>
+      </ng-container>
+  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="filiereNom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Filiere </th>
+        <td mat-cell *matCellDef="let row"> {{row.filiereNom}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="partieCours">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Element </th>
+        <td mat-cell *matCellDef="let row"> {{row.partieCours}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="noteTP">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> noteTP </th>
+        <td mat-cell *matCellDef="let row"> {{row.noteTP}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="noteExam">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> noteExam </th>
+        <td mat-cell *matCellDef="let row"> {{row.noteExam}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="noteFinale">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> moyenneElement </th>
+        <td mat-cell *matCellDef="let row"> {{row.noteFinale}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="resultat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> statusElement </th>
+        <td mat-cell *matCellDef="let row"> {{row.resultat}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+        <td mat-cell  *matCellDef="let row">
+
+          <!-- <span (click)="deleteRow(row)" class="status delete"><fa-icon   class="status delete" [icon]="delete"></fa-icon></span> -->
+
+          <!-- <span (click)="updateRow(row)" class="status edit"><fa-icon   class="status edit" [icon]="edit"></fa-icon></span> -->
+
+          <span (click)="showMoreRow(row)" class="status more"><i class="status more" class="fa fa-eye" aria-hidden="true"></i></span>
+
+        </td>
+      </ng-container>
+  
+      
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter </td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+  
+  

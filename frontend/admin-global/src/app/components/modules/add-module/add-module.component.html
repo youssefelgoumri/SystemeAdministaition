@@ -1,0 +1,31 @@
+<h2 mat-dialog-title class="text-center" style="color: rgb(255, 166, 0);">{{ message }}</h2>
+<mat-dialog-content class="mb-0 pb-0">
+<form [formGroup]="module">
+    <mat-form-field class="example-full-width my-2">
+        <mat-label>Intitulé</mat-label>
+        <input type="text" matInput formControlName="intitule">
+    </mat-form-field>
+    <mat-form-field class="example-full-width my-2">
+        <mat-label>Responsable</mat-label>
+        <mat-select formControlName="responsable" required>
+            <mat-option *ngFor="let responsable of responsables" [value]="responsable">
+                {{responsable.prenom}} {{responsable.nom}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width my-2" *ngIf="enregistrerIsClicked && !addElementIsClicked">
+        <mat-label>Pourcentage Cours</mat-label>
+        <input type="number" matInput formControlName="contributionCours" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width my-2" *ngIf="enregistrerIsClicked && !addElementIsClicked">
+        <mat-label>Pourcentage TP</mat-label>
+        <input type="number" matInput formControlName="contributionTP" required>
+    </mat-form-field>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex justify-content-center">
+    <div>
+        <button class="custom-btn btn-3" mat-button (click)="send()"><span>Enregistrer</span></button>
+        <button class="custom-btn btn-3 text-nowrap" mat-button (click)="add()"><span>+Add Element</span></button>
+    </div>
+</mat-dialog-actions>

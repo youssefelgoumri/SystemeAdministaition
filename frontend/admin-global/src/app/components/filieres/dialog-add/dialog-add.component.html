@@ -1,0 +1,52 @@
+<mat-dialog-content class="content-dialog">
+  <h2>Add Filieres</h2>
+  <form [formGroup]="filiereForm" (ngSubmit)="onSubmit()">
+    <label>
+      Nom:<br>
+      <input type="text" formControlName="nom">
+    </label><br>
+    <label>
+      Nombre d'années:<br>
+      <input type="number" formControlName="nombreAnnees" min="1">
+    </label><br>
+    <label>
+      Nombre de semestres par année:<br>
+      <input type="number" formControlName="nombreSemestresParAnnee" min="1">
+    </label><br>
+    <label>
+      Nom du responsable :<br>
+      <input type="text" formControlName="nomResponsable">
+    </label><br>
+    <label>
+      Prénom du responsable :<br>
+      <input type="text" formControlName="prenomResponsable">
+    </label><br>
+    <div formArrayName="semestres">
+      <div *ngFor="let semestre of semestres.controls; let i = index" [formGroupName]="i">
+        <h3>Semestre {{ i + 1 }}</h3>
+        <label>
+          Nom du semestre:<br>
+          <input type="text" formControlName="nomSemestre">
+        </label><br>
+
+        <div formArrayName="modulesIds">
+          <div *ngFor="let moduleId of semestre.get('modulesIds')?.value; let j = index" >
+            <label>
+              Module {{ j + 1 }}:<br>
+              <input type="text" [formControlName]="j">
+            </label><br>
+            <button type="button" (click)="removeModule(i, j)" style=" margin-bottom: 5px">Supprimer ce module</button>
+          </div>
+        </div>
+        <button type="button" (click)="addModule(i)" style="margin-right: 5px; margin-bottom: 5px">Ajouter un module</button>
+        <button type="button" (click)="removeSemestre(i)" style="margin-bottom: 5px">Supprimer ce semestre</button>
+      </div>
+    </div>
+    <button type="button" (click)="addSemestre()">Ajouter un semestre</button>
+    <mat-dialog-actions class="button-container">
+      <button  class="custom-btn btn-7" ><span>Submit</span></button>
+      <button  class="custom-btn btn-7" (click)="onCancel()"><span>Cancel</span></button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
+

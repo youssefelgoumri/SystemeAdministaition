@@ -1,0 +1,192 @@
+/* Général */
+
+.expandedclose{
+  margin-left: calc(70px); /* Adjust the width when sidebar is close */
+
+  border-radius: 40px;
+
+}
+
+
+.expanded {
+  margin-left: 280px; /* Adjust the width when sidebar is open */
+
+  border-radius: 40px;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #444;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px; /* Ajout de padding pour espacer le contenu du bord */
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Formulaire */
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.form-group {
+  margin-bottom: 20px; /* Augmentation de la marge pour une meilleure séparation entre les groupes */
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block; /* Mettre les labels sur une ligne différente pour une meilleure disposition */
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s; /* Ajout de transition pour un effet de focus plus fluide */
+}
+
+textarea {
+  height: 100px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+/* Bouton submit */
+.btn-submit {
+  background-color: #ef603b;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Animation plus fluide */
+}
+
+.btn-submit:hover {
+  background-color: #44894c;
+}
+
+/* Erreurs */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+.custom-btn {
+  width: 160px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-7 {
+  background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-7 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: rgba(2,126,251,1);
+  box-shadow:
+    -7px -7px 20px 0px rgba(255,255,255,.9),
+    -4px -4px 5px 0px rgba(255,255,255,.9),
+    7px 7px 20px 0px rgba(0,0,0,.2),
+    4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7:before{
+  height: 0%;
+  width: 2px;
+}
+.btn-7:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-7:hover{
+  color: rgba(251,75,2,1);
+  background: transparent;
+}
+.btn-7:hover:before {
+  height: 100%;
+}
+.btn-7:hover:after {
+  width: 100%;
+}
+.btn-7 span:before,
+.btn-7 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgba(2,126,251,1);
+  box-shadow:
+    -7px -7px 20px 0px rgba(255,255,255,.9),
+    -4px -4px 5px 0px rgba(255,255,255,.9),
+    7px 7px 20px 0px rgba(0,0,0,.2),
+    4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-7 span:after {
+  height: 2px;
+  width: 0%;
+}
+.btn-7 span:hover:before {
+  height: 100%;
+}
+.btn-7 span:hover:after {
+  width: 100%;
+}
