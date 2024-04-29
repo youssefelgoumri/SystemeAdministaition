@@ -2,9 +2,8 @@
 
 
 
-======================================================================================
 backend
-======================================================================================
+
 service name;port;spring application name;db name
 eureka-discovery;8761;;
 gateway-service;2222;;
@@ -20,7 +19,9 @@ inscription-pedagogique-service;9991;inscription-pedagogique-service;inscription
 deliberation-semestre-service;1212;deliberation-semestre-service;d_semestre-db
 validation-param-service;1313;validation-param-service;v_p-db
 Service-InscriptionEnLigne;4445;service-inscriptionEnLigne;inscriptionEnLigne-db
-======================================================================================
+
+
 frontend
-======================================================================================
+
+
 prof-reservation-absence-fe;1111
